@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research | Michael Rockman</title>
+  <meta name="description" content="Research interests of Michael Rockman, MD, PhD: ion channel biophysics, hERG/KCNH2, and cardiac excitability.">
+  <link rel="stylesheet" href="style.css?v=43">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <div class="brand">
+      <a class="site-name" href="index.html">Michael Rockman, MD, PhD</a>
+      <div class="iconrow">
+        <a href="https://scholar.google.com/citations?user=M2Ku96kAAAAJ&hl=en" aria-label="Google Scholar"><i class="ai ai-google-scholar"></i></a>
+        <a href="https://x.com/DataExplorer21" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/michael-rockman-b0578399/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://orcid.org/0000-0002-8762-8604" aria-label="ORCID"><i class="ai ai-orcid"></i></a>
+        <a href="mailto:mrockman@wisc.edu" aria-label="Send email"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Experience</a></li>
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="research.html" aria-current="page">Research</a></li>
+        <li><a href="resources.html">Resources</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Research</h1>
+
+  <section>
+    <h2>Current work</h2>
+    <p>My current project studies hERG channel gating mechanisms and assembly. It uses conformation-selective antibody fragments (ScFv), patch-clamp electrophysiology, and kinetic modeling to define structure-function relationships. The goal of this work is to understand how the expression, structure, and function of these channels relate, so that we can improve treatments for rhythm disorders.</p>
+  </section>
+
+  <section class="ep" aria-labelledby="ep-title">
+    <h2 id="ep-title">From Ion Channels to the ECG</h2>
+    <p class="ep-sub">Explore how hERG (IKr) influences ventricular repolarization and the surface ECG.</p>
+
+    <div class="ep-box">
+      <div class="ep-control">
+        <label for="ep-slider">Relative IKr Conductance</label>
+        <div class="ep-slider-wrap">
+          <input id="ep-slider" type="range" min="0" max="150" step="5" value="100">
+          <span class="ep-ref" aria-hidden="true"></span>
+          <span class="ep-ref-label" aria-hidden="true">100% reference</span>
+        </div>
+        <output id="ep-value" for="ep-slider">100%</output>
+        <button type="button" id="ep-reset" class="ep-reset">Reset</button>
+      </div>
+
+      <div class="ep-graphs">
+        <figure class="ep-fig">
+          <svg id="ep-ap" viewBox="0 0 320 200" role="img" aria-label="Schematic ventricular action potential. Solid blue shows the selected IKr; dashed gray shows the 100 percent reference."></svg>
+        </figure>
+        <figure class="ep-fig">
+          <svg id="ep-ecg" viewBox="0 0 320 200" role="img" aria-label="Schematic surface ECG with P, Q, R, S, and T waves. Solid blue shows the selected IKr; dashed gray shows the 100 percent reference."></svg>
+        </figure>
+      </div>
+      <p class="ep-legend"><span class="ep-key ep-key-ref"></span>Normal reference (100%)<span class="ep-key"></span>Selected IKr</p>
+
+      <div class="ep-clinical">
+        <h3>Clinical Connection</h3>
+        <p id="ep-text" aria-live="polite"></p>
+      </div>
+
+      <details class="ep-details">
+        <summary>Why can reduced IKr increase arrhythmia susceptibility?</summary>
+        <p>IKr contributes to ventricular repolarization. Reducing this current can prolong action-potential duration and diminish repolarization reserve. Under susceptible conditions, early afterdepolarizations and spatially heterogeneous repolarization can contribute to torsades de pointes. Actual arrhythmia risk depends on multiple factors, including other ionic currents, heart rate, electrolytes, medications, and underlying cardiac disease.</p>
+      </details>
+    </div>
+
+  </section>
+
+  <section>
+    <h2>Graduate School Work</h2>
+    <p>During my PhD in the laboratory of Brad S. Rothberg at Temple University, I characterized BK channel activation and inhibition by small-molecule drugs, and by disease-associated mutations. Those studies combined macroscopic recordings, single-channel recordings, and kinetic models. Modeling helps us understand proper mechanisms of activation, and the molecular effects of certain drugs and mutations.</p>
+    <img class="photo-wide" src="images/web/bk-cartoon.png" alt="Cartoon of a BK channel">
+
+    <section class="ha" id="ha-module" aria-labelledby="ha-title">
+      <p>We can account for changes in channel function (gating) by changes in certain gating parameters. I made an interactive representation of the dual-allosteric model below to see how changing these parameters would be observed in conductance-voltage relationships across different concentrations of calcium.</p>
+      <h3 id="ha-title">Dual-Allosteric Model of BK Channel Gating (Horrigan–Aldrich model)</h3>
+      <p class="ha-sub">Steady-state open probability from the dual-allosteric model. Dashed lines use the published parameters; solid lines use your current values.</p>
+
+      <div class="ha-top">
+        <div class="ha-left">
+          <p class="ha-alert ha-hint">Click a letter to adjust its value.</p>
+          <figure class="ha-scheme-wrap">
+            <div class="ha-scheme-card">
+              <svg id="ha-scheme" viewBox="40 190 340 330" role="group" aria-label="Horrigan–Aldrich gating scheme. Voltage-sensor top left, pore right, Ca2+ sensor bottom left. Couplings D, E, and C connect them. Click each part.">
+                <defs>
+                  <marker id="ha-head" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" fill="#111111"/>
+                  </marker>
+                </defs>
+
+                <text x="77" y="216" class="ha-diag-title ha-vs-title">Voltage-sensor</text>
+                <g class="ha-part" data-p="J" tabindex="0" role="button" aria-label="J: R - A equilibrium constant of the voltage-sensor">
+                  <rect x="122" y="236" width="62" height="82" rx="8" class="ha-box-vs"/>
+                  <text x="153" y="263" class="ha-label ha-state" text-anchor="middle" data-note="R: Resting state of the voltage-sensor.">R</text>
+                  <text x="153" y="285" class="ha-label" text-anchor="middle">↕ <tspan class="ha-var">J</tspan></text>
+                  <text x="153" y="306" class="ha-label ha-state" text-anchor="middle" data-note="A: Active state of the voltage-sensor.">A</text>
+                </g>
+                <text x="197" y="322" class="ha-mult">4</text>
+
+                <text x="326" y="298" class="ha-diag-title ha-pore-title">Pore</text>
+                <g class="ha-part" data-p="L" tabindex="0" role="button" aria-label="L: C - O equilibrium constant of the pore">
+                  <rect x="293" y="318" width="65" height="81" rx="8" class="ha-box-pore"/>
+                  <text x="326" y="345" class="ha-label ha-state" text-anchor="middle" data-note="C: Closed state of the pore.">C</text>
+                  <text x="326" y="366" class="ha-label" text-anchor="middle">↕ <tspan class="ha-var">L</tspan></text>
+                  <text x="326" y="388" class="ha-label ha-state" text-anchor="middle" data-note="O: Open state of the pore.">O</text>
+                </g>
+
+                <text x="112" y="468" class="ha-diag-title ha-ca-title" text-anchor="end">Ca<tspan dy="-7" font-size="15">2+</tspan></text>
+                <text x="112" y="494" class="ha-diag-title ha-ca-title" text-anchor="end">sensor</text>
+                <g class="ha-part" data-p="K" tabindex="0" role="button" aria-label="K: Ca2+ dissociation constant of the Ca2+-sensor">
+                  <rect x="125" y="420" width="62" height="84" rx="8" class="ha-box-ca"/>
+                  <text x="156" y="444" class="ha-label ha-state" text-anchor="middle" data-note="X: Unliganded state of the Ca2+-sensor.">X</text>
+                  <text x="156" y="467" class="ha-label" text-anchor="middle">↕ <tspan class="ha-var">K</tspan></text>
+                  <text x="156" y="488" class="ha-label ha-state" text-anchor="middle" data-note="XCa2+: Ca2+-bound state of the Ca2+-sensor.">X<tspan dy="-6" font-size="13">Ca²⁺</tspan></text>
+                </g>
+                <text x="201" y="501" class="ha-mult">4</text>
+
+                <g class="ha-part" data-p="D" tabindex="0" role="button" aria-label="D: Allosteric coupling constant, between channel opening and voltage-sensor activation">
+                  <line x1="200" y1="281" x2="287" y2="318" class="ha-arrow-hit"/>
+                  <line x1="200" y1="281" x2="287" y2="318" class="ha-arrow"/>
+                  <text x="252" y="289" class="ha-coupling">D</text>
+                </g>
+                <g class="ha-part" data-p="E" tabindex="0" role="button" aria-label="E: Allosteric coupling constant, between Ca2+-sensor activation and voltage-sensor activation">
+                  <line x1="154" y1="326" x2="154" y2="414" class="ha-arrow-hit"/>
+                  <line x1="154" y1="326" x2="154" y2="414" class="ha-arrow"/>
+                  <text x="136" y="375" class="ha-coupling">E</text>
+                </g>
+                <g class="ha-part" data-p="C" tabindex="0" role="button" aria-label="C: Allosteric coupling constant, between channel opening and Ca2+-sensor activation">
+                  <line x1="199" y1="433" x2="287" y2="400" class="ha-arrow-hit"/>
+                  <line x1="199" y1="433" x2="287" y2="400" class="ha-arrow"/>
+                  <text x="245" y="439" class="ha-coupling">C</text>
+                </g>
+              </svg>
+            </div>
+            <figcaption class="ha-scheme-note">Adapted from Horrigan and Aldrich (2002).</figcaption>
+          </figure>
+          <p id="ha-explain" class="ha-explain" aria-live="polite">Click a letter on the scheme to adjust its value.</p>
+        </div>
+
+        <div class="ha-right">
+          <div class="ha-controls">
+            <label>Published fit
+              <select id="ha-fit">
+                <option value="A">Fit A</option>
+                <option value="B">Fit B</option>
+              </select>
+            </label>
+            <button type="button" id="ha-reset" class="ep-reset">Reset to published parameters</button>
+            <button type="button" id="ha-all" class="ep-reset" aria-pressed="false">Show all parameters</button>
+          </div>
+          <p class="ha-source">Fit A and Fit B parameters are listed in Table 1 of Rockman, Vouga, and Rothberg, <em>J Gen Physiol</em> 2020.</p>
+
+          <div class="ha-grid">
+            <div class="ha-param" data-k="J0">
+              <label for="ha-J0">J<sub>0</sub> <span>R - A equilibrium constant of the voltage-sensor</span></label>
+              <div class="ha-row"><input id="ha-J0" type="range" step="0.01"><output id="ha-J0-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="zJ">
+              <label for="ha-zJ">z<sub>J</sub> <span>Gating valence of R - A equilibrium constant</span></label>
+              <div class="ha-row"><input id="ha-zJ" type="range" step="0.01"><output id="ha-zJ-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="L0">
+              <label for="ha-L0">L<sub>0</sub> <span>C - O equilibrium constant of the pore</span></label>
+              <div class="ha-row"><input id="ha-L0" type="range" step="0.01"><output id="ha-L0-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="zL">
+              <label for="ha-zL">z<sub>L</sub> <span>Gating valence of C - O equilibrium constant</span></label>
+              <div class="ha-row"><input id="ha-zL" type="range" step="0.01"><output id="ha-zL-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="KD">
+              <label for="ha-KD">K<sub>D</sub> <span>Ca<sup>2+</sup> dissociation constant of the Ca<sup>2+</sup>-sensor</span></label>
+              <div class="ha-row"><input id="ha-KD" type="range" step="0.01"><output id="ha-KD-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="C">
+              <label for="ha-C">C <span>Allosteric coupling constant, between channel opening and Ca<sup>2+</sup>-sensor activation</span></label>
+              <div class="ha-row"><input id="ha-C" type="range" step="0.01"><output id="ha-C-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="D">
+              <label for="ha-D">D <span>Allosteric coupling constant, between channel opening and voltage-sensor activation</span></label>
+              <div class="ha-row"><input id="ha-D" type="range" step="0.01"><output id="ha-D-out"></output></div>
+            </div>
+            <div class="ha-param" data-k="E">
+              <label for="ha-E">E <span>Allosteric coupling constant, between Ca<sup>2+</sup>-sensor activation and voltage-sensor activation</span></label>
+              <div class="ha-row"><input id="ha-E" type="range" step="0.01"><output id="ha-E-out"></output></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <figure class="ep-fig">
+          <svg id="ha-plot" viewBox="0 0 320 230" role="img" aria-label="Predicted open probability versus voltage at 0, 1, 10, and 100 micromolar calcium. Dashed: published parameters. Solid: current values."></svg>
+        </figure>
+      <p class="ha-legend"><span class="ha-dot" style="background:#dc2626"></span>0 µM <span class="ha-dot" style="background:#d97706"></span>1 µM <span class="ha-dot" style="background:#059669"></span>10 µM <span class="ha-dot" style="background:#2563eb"></span>100 µM Ca²⁺ (left)</p>
+
+    </section>
+  </section>
+
+  <section>
+    <h2>Memberships</h2>
+    <ul class="plain">
+      <li>American College of Cardiology (2024–)</li>
+      <li>Heart Rhythm Society (2022–)</li>
+      <li>Society of General Physiologists (2019–)</li>
+      <li>Biophysical Society (2019–)</li>
+      <li>American Physician Scientists Association (2015–)</li>
+    </ul>
+  </section>
+
+  <p class="ep-note">Educational visualization. Action-potential and ECG responses are schematic unless otherwise specified; not intended for clinical prediction.</p>
+</main>
+<script src="ion-to-ecg.js?v=29" defer></script>
+<script src="ha.js?v=38" defer></script>
+</body>
+</html>

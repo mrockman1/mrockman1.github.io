@@ -1,0 +1,1549 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700&display=swap");
+
+:root {
+  --bg: #e9f1fa;
+  --text: #1f2328;
+  --muted: #55657a;
+  --accent: #1f5fae;
+  --rule: #c9d9ea;
+  --card: #f6f9fd;
+  --max: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181c;
+    --text: #e8e8e6;
+    --muted: #a4aab4;
+    --accent: #7fb4ea;
+    --rule: #2c3038;
+    --card: #1d2026;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #16181c;
+  --text: #e8e8e6;
+  --muted: #a4aab4;
+  --accent: #7fb4ea;
+  --rule: #2c3038;
+  --card: #1d2026;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 18px/1.6 "Source Sans 3", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* Top bar: hidden at the top of the page, slides down after scrolling */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background: #1f3d6b;
+  color: #fff;
+  border-bottom: 0;
+}
+
+.topbar .wrap {
+  max-width: 920px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+}
+
+.topbar .site-name {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.topbar nav ul {
+  justify-content: flex-end;
+}
+
+.topbar nav a {
+  color: #e6eefa;
+}
+
+.topbar nav a[aria-current="page"],
+.topbar nav a:hover {
+  color: #9fc5f0;
+}
+
+body {
+  padding-top: 124px;
+}
+
+/* Icon row under the top bar */
+/* Name and icons form one column; the icons are centered under the name */
+.brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.topbar .iconrow {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  padding-top: 8px;
+  padding-bottom: 26px;
+}
+
+/* Hover label under each icon */
+.topbar .iconrow a {
+  position: relative;
+}
+
+.topbar .iconrow a:hover::after {
+  content: attr(aria-label);
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  background: #0f1b2b;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+  z-index: 20;
+}
+
+.topbar .iconrow a {
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  font-size: 1.05rem;
+  text-decoration: none;
+}
+
+.topbar .iconrow a:hover {
+  border-color: #9fc5f0;
+  color: #9fc5f0;
+}
+
+/* About page timeline: each period opens to show detail */
+.timeline details {
+  border-top: 1px solid var(--rule);
+  padding: 10px 0;
+}
+
+.timeline details:last-child {
+  border-bottom: 1px solid var(--rule);
+}
+
+.timeline summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.timeline summary span {
+  color: var(--text);
+  font-weight: 400;
+  margin-left: 8px;
+}
+
+.timeline p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+/* Research experiences: year and PI photo on the left, description on the right */
+.exp {
+  display: grid;
+  grid-template-columns: 170px 1fr;
+  gap: 24px;
+  padding: 18px 0;
+  border-top: 1px solid var(--rule);
+}
+
+/* Research row: scientist name above the photo, role in blue and date in black on the right */
+.exp-pi {
+  font-weight: 600;
+  margin: 0 0 8px;
+  font-size: 0.95rem;
+}
+
+.exp-pi-img {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+.exp-role {
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0 0 2px;
+}
+
+.exp-date {
+  color: var(--text);
+  margin: 0 0 8px;
+}
+
+.exp-links {
+  margin-top: 14px;
+  padding-left: 0;
+}
+
+.exp-links .cv-btn {
+  font-size: 0.95rem;
+  padding: 8px 14px 8px 8px;
+}
+
+.exp-links .cv-circle {
+  width: 36px;
+  height: 36px;
+  font-size: 0.95rem;
+}
+
+.logo-img {
+  height: 64px;
+  width: auto;
+  max-width: 100%;
+  display: block;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-bottom: 14px;
+}
+
+.exp-year {
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0 0 10px;
+}
+
+.exp-title {
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.exp-body p {
+  margin: 0 0 6px;
+}
+
+.photo-box {
+  width: 120px;
+  aspect-ratio: 1 / 1;
+  background: var(--rule);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+  padding: 8px;
+}
+
+.photo-wide {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  margin-top: 12px;
+}
+
+/* Research interests: one column each, with a photo slot under each */
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.interest h3 {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+
+.interest .photo-box {
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  .exp {
+    grid-template-columns: 1fr;
+  }
+  .photo-box {
+    width: 96px;
+  }
+  .interest-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Download CV: a round button */
+.cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  border-radius: 8px;
+  padding: 10px 18px 10px 12px;
+}
+
+.cv-btn:hover {
+  border-color: var(--accent);
+}
+
+.cv-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+}
+
+.cv-btn:hover .cv-circle {
+  background: #174a8a;
+}
+
+/* Role label above each date, in blue */
+.exp-role {
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.8rem;
+  margin: 0 0 4px;
+}
+
+/* Clinical training: institutions in a row, arrows between */
+.flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.flow-node {
+  flex: 1;
+  min-width: 160px;
+  display: flex;
+  flex-direction: column;
+}
+
+.flow-date {
+  color: var(--accent);
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+/* Degree lines: fixed line height so the three columns line up */
+.flow-node p {
+  font-size: 0.9rem;
+  margin: 0 0 2px;
+  min-height: 1.35em;
+}
+
+.flow-node .flow-date {
+  font-size: 1rem;
+}
+
+@media (min-width: 601px) {
+  .flow-node p:not(.flow-date) {
+    white-space: nowrap;
+  }
+}
+
+.flow-name {
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+
+.flow-arrow {
+  flex: none;
+  width: 36px;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1;
+  color: var(--accent);
+  align-self: flex-start;
+  margin-top: 57px;
+}
+
+.logo-box {
+  height: 64px;
+  background: var(--rule);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-top: auto;
+}
+
+/* Publications: the Inquirer piece as a feature card */
+.essay {
+  border-left: 3px solid var(--accent);
+  background: var(--card);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.essay .pub-thumb {
+  width: 120px;
+  height: auto;
+}
+
+.essay-kicker {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0 0 6px;
+}
+
+.essay-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .flow {
+    flex-direction: column;
+  }
+  .flow-arrow {
+    transform: rotate(90deg);
+    margin-top: 0;
+    padding-top: 0;
+    align-self: flex-start;
+    margin-left: 20px;
+  }
+}
+
+/* Publications: a figure thumbnail beside each paper */
+.pub {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+.pub-thumb {
+  width: 120px;
+  height: auto;
+  border-radius: 6px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.pub-thumb:hover {
+  transform: scale(1.9);
+  transform-origin: left center;
+  z-index: 5;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 600px) {
+  .pub {
+    grid-template-columns: 84px 1fr;
+    gap: 12px;
+  }
+  .pub-thumb {
+    width: 84px;
+    height: auto;
+  }
+  .pub-thumb:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* Section without the rule lines above and below its heading */
+.plain-section h2 {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0.6rem;
+}
+
+/* Lab website: a plain teal link, so it doesn't look like a download */
+.lab-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 8px;
+  color: #2f7d6d;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.lab-link i {
+  font-size: 0.8rem;
+}
+
+.lab-link:hover {
+  text-decoration: underline;
+}
+
+.text-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: #2f7d6d;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Nobel Prize: gold button with the prize logo */
+.nobel-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #6b4f0a;
+  background: #fdf8e8;
+  border: 1px solid #d4a017;
+  border-radius: 8px;
+  padding: 8px 16px 8px 8px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nobel-btn:hover {
+  background: #f8edc7;
+}
+
+.nobel-circle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 2px #d4a017;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.nobel-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Placeholders for things still coming: grayed out, not clickable */
+.btn-soon,
+.card.soon {
+  color: #9aa1ab;
+  border: 1px dashed #b9bfc8;
+  background: transparent;
+  cursor: default;
+}
+
+.card.soon strong {
+  color: #9aa1ab;
+}
+
+.btn-soon .cv-circle {
+  background: #c5cad2;
+}
+
+/* Nobel Prize: small link under the lab website, with the prize logo */
+.nobel-link {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  color: #8a6a12;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.nobel-link img {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.nobel-link:hover {
+  text-decoration: underline;
+}
+
+/* Wisconsin W icon in the sidebar links */
+.uw-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Research: figures across the top */
+/* Three figures on one line, all the same height */
+.figs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.figs img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .figs {
+    grid-template-columns: 1fr;
+  }
+  .figs img {
+    height: auto;
+  }
+}
+
+/* Phones only: homepage text sits above the photo */
+@media (max-width: 600px) {
+  .home .main-col {
+    order: -1;
+  }
+}
+
+/* Phones only: the institutions stay on one row, and the top bar fits one line */
+@media (max-width: 600px) {
+  .flow {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+  }
+
+  .flow-node {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .flow-node p {
+    font-size: 0.72rem;
+  }
+
+  .logo-img {
+    height: 40px;
+  }
+
+  .flow-arrow {
+    transform: none;
+    width: 16px;
+    flex: none;
+    font-size: 1rem;
+    margin: 36px 0 0;
+    padding: 0;
+  }
+
+  /* Icons and menu both start on the left; the menu is one row you can swipe */
+  .brand {
+    align-items: flex-start;
+  }
+
+  .topbar nav {
+    width: 100%;
+  }
+
+  .topbar nav ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    font-size: 0.85rem;
+    gap: 2px 12px;
+    padding-bottom: 2px;
+    scrollbar-width: none;
+  }
+
+  .topbar .site-name {
+    font-size: 1rem;
+  }
+}
+
+/* Ion channel to ECG module (research page). Self-contained: remove this block,
+   the ion-to-ecg.js script, and the <section class="ep"> markup to take it out. */
+.ep {
+  margin: 8px 0 32px;
+}
+
+.ep-sub {
+  color: var(--muted);
+  margin: 0 0 16px;
+}
+
+.ep-control {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.ep-control label {
+  font-weight: 600;
+}
+
+.ep-slider-wrap {
+  position: relative;
+  flex: 1 1 220px;
+  padding-bottom: 26px;
+}
+
+.ep-slider-wrap input {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.ep-ref {
+  position: absolute;
+  left: calc(8px + (100% - 16px) * 0.6667);
+  top: 18px;
+  width: 1px;
+  height: 8px;
+  background: var(--muted);
+}
+
+.ep-ref-label {
+  position: absolute;
+  left: calc(8px + (100% - 16px) * 0.6667);
+  top: 28px;
+  transform: translateX(-50%);
+  font-size: 0.75rem;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+#ep-value {
+  font-weight: 600;
+  min-width: 3.5em;
+  text-align: right;
+  color: var(--accent);
+}
+
+.ep-reset {
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--accent);
+  border-radius: 6px;
+  padding: 4px 12px;
+  font: inherit;
+  cursor: pointer;
+}
+
+.ep-graphs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 14px;
+}
+
+.ep-fig {
+  margin: 0;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 10px;
+  background: transparent;
+}
+
+.ep-wave-label {
+  font-size: 15px;
+  font-weight: 700;
+  fill: var(--text);
+}
+
+.gv {
+  margin-top: 28px;
+}
+
+.gv h3 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.gv-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.gv-controls {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 8px 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.gv-controls input {
+  width: 100%;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.gv-controls output {
+  font-weight: 600;
+  color: var(--accent);
+  min-width: 4.5em;
+  text-align: right;
+}
+
+.gv-controls .ep-reset {
+  grid-column: 3;
+}
+
+/* Coming soon note (resources page) */
+.coming-soon {
+  border-top: 1px solid var(--rule);
+  padding-top: 10px;
+  margin-top: 10px;
+  color: var(--text);
+  font-weight: 700;
+}
+
+.ep-fig svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ep-axis {
+  stroke: var(--rule);
+  stroke-width: 1;
+}
+
+.ep-tick {
+  font-size: 9px;
+  fill: var(--muted);
+}
+
+.ep-ref-line {
+  fill: none;
+  stroke: #8a929c;
+  stroke-width: 1.6;
+  stroke-dasharray: 5 4;
+}
+
+.ep-sel-line {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.ep-qt-sel {
+  stroke: var(--accent);
+  stroke-width: 1.2;
+}
+
+.ep-qt-ref {
+  stroke: #8a929c;
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.ep-qt-label {
+  font-size: 9px;
+  fill: var(--muted);
+}
+
+.ep-legend {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 10px 0 0;
+}
+
+.ep-key {
+  display: inline-block;
+  width: 22px;
+  border-top: 2px solid var(--accent);
+  vertical-align: middle;
+  margin: 0 6px 0 10px;
+}
+
+.ep-key-ref {
+  border-top: 2px dashed #8a929c;
+}
+
+.ep-clinical {
+  margin-top: 16px;
+  border-left: 3px solid var(--accent);
+  padding: 4px 0 4px 14px;
+}
+
+.ep-clinical h3 {
+  font-size: 0.95rem;
+  margin: 0 0 4px;
+}
+
+.ep-clinical p {
+  margin: 0;
+}
+
+.ep-details {
+  margin-top: 14px;
+}
+
+.ep-details summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.ep-details p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.ep-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 14px;
+}
+
+@media (max-width: 640px) {
+  .ep-graphs {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Horrigan–Aldrich G–V module (research page). Self-contained: remove this block,
+   ha.js, and the #ha-module markup to take it out. */
+.ha {
+  margin-top: 28px;
+}
+
+.ha h3 {
+  font-size: 1rem;
+  margin: 0 0 4px;
+}
+
+.ha h4 {
+  font-size: 0.9rem;
+  margin: 14px 0 4px;
+}
+
+.ha-sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0 0 12px;
+}
+
+.ha-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+}
+
+.ha-check {
+  color: var(--muted);
+}
+
+.ha-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4px 0;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.ha-grid label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.ha-grid label span {
+  display: block;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.ha-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ha-row input {
+  flex: 1;
+  margin: 0;
+  accent-color: var(--accent);
+}
+
+.ha-row output {
+  min-width: 6.5em;
+  text-align: right;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 0.9rem;
+}
+
+.ha-grid input:focus-visible,
+.ha-controls select:focus-visible,
+.ha-controls input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ha-grid label {
+  cursor: default;
+}
+
+.ha-grid .ha-row {
+  min-width: 0;
+}
+
+#ha-plot {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.ha-grid-line,
+.ha-grid {
+  color: var(--text);
+}
+
+.ha-tick {
+  font-size: 9px;
+  fill: var(--muted);
+}
+
+.ha-published {
+  fill: none;
+  stroke-width: 1.4;
+  stroke-dasharray: 5 4;
+  opacity: 0.85;
+}
+
+.ha-modified {
+  fill: none;
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+
+.ha-legend {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 8px 0 0;
+}
+
+.ha-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 4px 0 10px;
+  vertical-align: middle;
+}
+
+.ha-v12 {
+  margin: 0;
+  padding-left: 1.2em;
+  font-size: 0.9rem;
+}
+
+/* Gating scheme (defense-slide layout) */
+.ha-scheme-wrap {
+  margin: 14px auto 6px;
+  max-width: 520px;
+}
+
+.ha-scheme-card {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 8px 10px;
+}
+
+#ha-scheme text {
+  fill: #111111;
+}
+
+.ha-vs-title {
+  font-size: 21px;
+}
+
+.ha-pore-title {
+  fill: #7030a0;
+  font-size: 21px;
+}
+
+.ha-ca-title {
+  fill: #21713f;
+  font-size: 21px;
+}
+
+.ha-hint {
+  margin: 14px 0 0;
+}
+
+.ha-source {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 6px 0 12px;
+}
+
+.ha-arrow {
+  stroke: #111111;
+  stroke-width: 2.2;
+  marker-start: url(#ha-head);
+  marker-end: url(#ha-head);
+  pointer-events: none;
+}
+
+.ha-arrow-hit {
+  stroke: transparent;
+  stroke-width: 16;
+  marker-start: none;
+  marker-end: none;
+  pointer-events: stroke;
+}
+
+.ha-part.active .ha-arrow {
+  stroke: #b45309;
+}
+
+.ha-box-vs {
+  fill: #ffffff;
+  stroke: #000000;
+  stroke-width: 2.6;
+}
+
+.ha-box-pore {
+  fill: #f5f3f7;
+  stroke: #7030a0;
+  stroke-width: 2.6;
+}
+
+.ha-box-ca {
+  fill: #f0f6ee;
+  stroke: #21713f;
+  stroke-width: 2.6;
+}
+
+.ha-alert {
+  color: #c81e1e;
+  font-weight: 700;
+}
+
+.ha-scheme-note {
+  font-size: 0.95rem;
+  text-align: center;
+  margin-top: 6px;
+}
+
+/* Parameter rows appear only when their scheme part is clicked, or when "Show all" is on */
+.ha-param {
+  display: none;
+  grid-template-columns: 1fr;
+  gap: 4px 14px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ha-param.on,
+.ha-all .ha-param {
+  display: grid;
+}
+
+.ha-param.on label,
+.ha-all .ha-param label {
+  color: var(--text);
+}
+
+.ha-pill {
+  fill: #ffffff;
+  stroke: #111827;
+  stroke-width: 1.2;
+}
+
+.ha-part.active .ha-pill {
+  stroke: #b45309;
+  stroke-width: 2;
+}
+
+/* Two plots side by side under the scheme and controls */
+
+
+/* Side-by-side: scheme and explanation on the left, controls on the right */
+.ha-top {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 760px) {
+  .ha-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact page: photo on the left, links on the right */
+.contact-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  align-items: flex-start;
+  margin-top: 24px;
+}
+
+.contact-photo {
+  width: 200px;
+  border-radius: 6px;
+  display: block;
+}
+
+.contact-top .side-links {
+  margin: 0;
+}
+
+.topbar .wrap {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.topbar nav {
+  border-top: 0;
+  padding: 12px 0;
+}
+
+/* Homepage: left sidebar (photo, name, links) and main column */
+.home {
+  max-width: 920px;
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 36px;
+}
+
+.photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--rule);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.photo-img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}
+
+.side-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 18px 0 6px;
+  line-height: 1.3;
+  color: var(--text);
+  text-transform: none;
+  letter-spacing: 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.side-title,
+.side-aff {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.side-links {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0;
+}
+
+.side-links li { margin-bottom: 8px; }
+
+.side-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 0.95rem;
+  word-break: break-all;
+}
+
+.side-links a:hover { text-decoration: underline; }
+
+.side-links i {
+  width: 18px;
+  text-align: center;
+  color: var(--accent);
+  font-size: 1.05rem;
+}
+
+.side-lab { font-size: 0.95rem; }
+
+.lede {
+  font-size: 1.2rem;
+  color: var(--text);
+  margin: 0 0 1.5rem;
+}
+
+.main-col h1 { margin-top: 0; }
+
+@media (max-width: 760px) {
+  .home {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .sidebar { max-width: 260px; }
+}
+
+/* Header: name as logo, then the page nav */
+.logo-block {
+  text-align: center;
+  padding: 26px 0 16px;
+}
+
+.site-name {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.icons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.icons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.icons a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.icons svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+header {
+  border-bottom: 1px solid var(--rule);
+}
+
+header nav {
+  border-top: 1px solid var(--rule);
+  padding: 10px 0;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+}
+
+nav a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+nav a[aria-current="page"],
+nav a:hover {
+  color: var(--accent);
+}
+
+main { padding-bottom: 32px; }
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.25rem;
+  line-height: 1.2;
+}
+
+.role {
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+}
+
+section { margin: 2.25rem 0; }
+
+h2 {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.4rem;
+  margin: 0 0 1rem;
+}
+
+a { color: var(--accent); }
+
+.cards {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 640px) {
+  .cards { grid-template-columns: 1fr 1fr; }
+}
+
+.card {
+  display: block;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 14px 16px;
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+}
+
+.card:hover { border-color: var(--accent); }
+
+.card strong {
+  display: block;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.card span {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+ol.pubs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ol.pubs li {
+  margin-bottom: 1.6rem;
+}
+
+/* Publication entries: blue title link, then authors and journal */
+.pub-title {
+  display: block;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  margin-bottom: 2px;
+}
+
+.pub-title:hover { text-decoration: underline; }
+
+.pub-authors { color: var(--text); margin: 0; }
+
+.pub-journal { color: var(--muted); font-size: 0.95rem; margin: 0; }
+
+.pub-links a {
+  font-size: 0.9rem;
+  margin-right: 12px;
+}
+
+ul.plain {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.plain li {
+  margin-bottom: 0.5rem;
+}
+
+footer {
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding: 16px 0 28px;
+}
+
+footer p { margin: 0 0 6px; }
+
+img, svg { max-width: 100%; }
+
+/* Phones: the top bar wraps onto two or three lines, so leave room for it */
+@media (max-width: 600px) {
+  body {
+    padding-top: 128px;
+  }
+
+  .topbar .wrap {
+    gap: 6px;
+  }
+
+  .topbar .site-name {
+    font-size: 1.15rem;
+  }
+
+  .topbar nav ul {
+    gap: 2px 14px;
+    font-size: 0.95rem;
+  }
+
+  .topbar .iconrow {
+    gap: 14px;
+    padding-bottom: 10px;
+  }
+
+}
